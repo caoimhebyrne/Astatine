@@ -25,35 +25,14 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import java.util.Iterator;
 
 @Mixin(MerchantScreen.class)
-public abstract class MerchantScreenMixin extends HandledScreen<MerchantScreenHandler> {
-    @Shadow @Final private static Identifier TEXTURE;
-
-    public MerchantScreenMixin(MerchantScreenHandler handler, PlayerInventory inventory, Text title) {
-        super(handler, inventory, title);
-    }
-
-    @Shadow protected abstract void method_20221(MatrixStack matrixStack, int i, int j, TraderOfferList traderOfferList);
-
-    @Shadow protected abstract boolean canScroll(int listSize);
-
-    @Shadow private int indexStartOffset;
-
-    @Shadow protected abstract void method_20222(MatrixStack matrixStack, ItemStack itemStack, ItemStack itemStack2, int i, int j);
-
-    @Shadow protected abstract void method_20223(MatrixStack matrixStack, TradeOffer tradeOffer, int i, int j);
-
-    @Shadow private int selectedIndex;
-
-    @Shadow protected abstract void drawLevelInfo(MatrixStack matrixStack, int i, int j, TradeOffer tradeOffer);
-
-    @Shadow @Final private static Text field_26571;
-
+public class MerchantScreenMixin {
     /**
      * @author Mojang / dreamhopping
      * @reason To fix MC-148998: "Items are offset in wandering trader's (and villager's) trading menu"
      */
     @ModifyVariable(method = "render", name = {"n"}, at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lnet/minecraft/client/gui/screen/ingame/MerchantScreen;method_20222(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;II)V"))
     public int fixOffset(int n) {
+        // TODO: If the itemstack in render is an item, don't change the variable
         return n + 1;
     }
 }
