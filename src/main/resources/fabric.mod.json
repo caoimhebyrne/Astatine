@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "performa",
+  "version": "${version}",
+  "name": "Performa",
+  "description": "A test mod for better Minecraft Performance and other features",
+  "authors": [
+    "dreamhopping"
+  ],
+  "contact": {
+    "repo": "https://github.com/dreamhopping/performa"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/Performa/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.dreamhopping.performa.client.PerformaClient"
+    ],
+    "main": [
+      "me.dreamhopping.performa.Performa"
+    ]
+  },
+  "mixins": [
+    "performa.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.9.3+build.207",
+    "fabric": "*",
+    "minecraft": "1.16.3"
+  }
+}
