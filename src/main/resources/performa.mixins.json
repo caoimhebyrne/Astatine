@@ -4,6 +4,7 @@
   "package": "me.dreamhopping.performa.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EnchantmentScreenHandlerMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin"
