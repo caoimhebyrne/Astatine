@@ -9,6 +9,6 @@ public class Performa implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        logger.info("Starting Performa v" + PerformaMetadata.VERSION);
+        logger.info("Performa v" + PerformaMetadata.VERSION + " has been loaded successfully!");
     }
 }
