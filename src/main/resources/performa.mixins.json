@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "EnchantmentScreenHandlerMixin",
+    "FoodComponentsMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin"
