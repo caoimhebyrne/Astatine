@@ -4,7 +4,7 @@
 
 Astatine is a mod for Minecraft which fixes common bugs in the game
 
-*Astatine uses the [Fabric Mod Loader](), Forge will not be supported.*
+*Astatine uses the [Fabric Mod Loader](https://fabricmc.net), Forge will not be supported.*
 
 </div>
 
