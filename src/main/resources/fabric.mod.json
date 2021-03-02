@@ -1,28 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "performa",
+  "id": "astatine",
   "version": "${version}",
-  "name": "Performa",
-  "description": "A test mod for better Minecraft Performance and other features",
+  "name": "Astatine",
+  "description": "Astatine is a mod for Minecraft which fixes common bugs in the game",
   "authors": [
     "dreamhopping"
   ],
   "contact": {
-    "repo": "https://github.com/dreamhopping/performa"
+    "repo": "https://github.com/dreamhopping/Astatine"
   },
   "license": "GPL-3.0",
-  "icon": "assets/Performa/icon.png",
+  "icon": "assets/Astatine/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": [
-      "dev.dreamhopping.performa.client.PerformaClient"
-    ],
     "main": [
-      "dev.dreamhopping.performa.Performa"
+      "dev.dreamhopping.astatine.Astatine"
     ]
   },
   "mixins": [
-    "performa.mixins.json"
+    "astatine.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.9.3+build.207",

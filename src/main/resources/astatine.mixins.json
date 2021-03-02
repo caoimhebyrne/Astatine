@@ -1,15 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "dev.dreamhopping.performa.mixins",
+  "package": "dev.dreamhopping.astatine.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "EnchantmentScreenHandlerMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin"
-  ],
-  "client": [
   ],
   "injectors": {
     "defaultRequire": 1
