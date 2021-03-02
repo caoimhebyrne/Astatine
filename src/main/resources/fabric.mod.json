@@ -15,10 +15,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "me.dreamhopping.performa.client.PerformaClient"
+      "dev.dreamhopping.performa.client.PerformaClient"
     ],
     "main": [
-      "me.dreamhopping.performa.Performa"
+      "dev.dreamhopping.performa.Performa"
     ]
   },
   "mixins": [

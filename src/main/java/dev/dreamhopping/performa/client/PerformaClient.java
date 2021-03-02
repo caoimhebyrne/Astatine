@@ -1,4 +1,4 @@
-package me.dreamhopping.performa.client;
+package dev.dreamhopping.performa.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;

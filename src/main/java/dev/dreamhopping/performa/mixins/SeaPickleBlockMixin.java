@@ -1,4 +1,4 @@
-package me.dreamhopping.performa.mixins;
+package dev.dreamhopping.performa.mixins;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SeaPickleBlock;

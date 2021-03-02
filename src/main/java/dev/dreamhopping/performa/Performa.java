@@ -1,4 +1,4 @@
-package me.dreamhopping.performa;
+package dev.dreamhopping.performa;
 
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
