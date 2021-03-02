@@ -7,7 +7,8 @@
     "EnchantmentScreenHandlerMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
-    "SeaPickleBlockMixin"
+    "SeaPickleBlockMixin",
+    "SquidEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

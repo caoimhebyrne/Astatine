@@ -22,11 +22,10 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
   from bookshelves.
 - ``MC-148998``: Items (specifically BlockItems) are offset in wandering trader's trading menu
 - ``MC-127995``: You can use bone meal on sea pickles in situations where no sea pickles will grow
-
+- ``MC-115092``: Squid named "Dinnerbone" or "Grumm" is not upside-down [(#3)](https://github.com/dreamhopping/Astatine/issues/3)
+  
 ### Bugs to be fixed
-
-- ``MC-115092``: Squid named "Dinnerbone" or "Grumm" is not
-  upside-down [(#3)](https://github.com/dreamhopping/Astatine/issues/3)
+- ``MC-117800``: Half bed can be placed outside the world's border
 
 ### Credits
 
