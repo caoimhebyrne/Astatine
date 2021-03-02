@@ -28,6 +28,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 /**
  * Fix MC-2474: Transparent blocks (ie: snow) placed between bookshelves and enchantment tables negate bonuses received from bookshelves
  * The fix allows a player to place *transparent* blocks between the enchantment table and the bookshelves, solid blocks (i.e. stone, wood) will still block that bookshelf
+ *
+ * @author Conor Byrne (dreamhopping)
  */
 @Mixin(EnchantmentScreenHandler.class)
 public abstract class EnchantmentScreenHandlerMixin {
