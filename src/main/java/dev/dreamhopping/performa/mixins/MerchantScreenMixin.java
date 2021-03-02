@@ -21,15 +21,27 @@ import java.util.Iterator;
  */
 @Mixin(MerchantScreen.class)
 public class MerchantScreenMixin {
-    boolean shouldOffset = false;
+    boolean isBlock = false;
 
-    @ModifyVariable(method = "render", name = {"n"}, at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lnet/minecraft/client/gui/screen/ingame/MerchantScreen;method_20222(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;II)V"))
+    /**
+     * Overrides the "n" variable to adjust the y position of the item being rendered
+     *
+     * @param n The y position of the item being rendered
+     * @return If shouldOffset is true, the original offset will have one added to it, otherwise do nothing
+     */
+    @ModifyVariable(method = "render", ordinal = 7, at = @At("STORE"))
     public int fixOffset(int n) {
-        return shouldOffset ? n + 1 : n;
+        return isBlock ? n + 1 : n;
     }
 
-    @Inject(method = "render", locals = LocalCapture.CAPTURE_FAILSOFT, at = @At(value = "INVOKE"))
-    private void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci, TradeOfferList tradeOfferList, int i, int j, int k, int l, int m, Iterator var11, TradeOffer tradeOffer, ItemStack itemStack, ItemStack itemStack2, ItemStack itemStack3, ItemStack itemStack4, int n) {
-        shouldOffset = !(itemStack.getItem() instanceof BlockItem);
+    /**
+     * Sets isBlock to true if the item being rendered is a "Block Item"
+     * This is needed as blocks are rendered one pixel too high, causing them to look weird in the trading GUI
+     *
+     * @param itemStack The item that is being rendered
+     */
+    @Inject(method = "render", locals = LocalCapture.CAPTURE_FAILSOFT, at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/village/TradeOffer;getMutableSellItem()Lnet/minecraft/item/ItemStack;"))
+    private void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci, TradeOfferList tradeOfferList, int i, int j, int k, int l, int m, Iterator var11, TradeOffer tradeOffer, ItemStack itemStack, ItemStack itemStack2, ItemStack itemStack3, ItemStack itemStack4) {
+        isBlock = !(itemStack.getItem() instanceof BlockItem);
     }
 }
