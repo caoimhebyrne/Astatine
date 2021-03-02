@@ -1,129 +1,29 @@
 package dev.dreamhopping.performa.mixins;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.*;
-import net.minecraft.util.registry.Registry;
-import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraft.screen.EnchantmentScreenHandler;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
-import java.util.List;
-import java.util.Random;
-
+/**
+ * Fix MC-2474: Transparent blocks (ie: snow) placed between bookshelves and enchantment tables negate bonuses received from bookshelves
+ * The fix allows a player to place *transparent* blocks between the enchantment table and the bookshelves, solid blocks (i.e. stone, wood) will still block that bookshelf
+ */
 @Mixin(EnchantmentScreenHandler.class)
-public abstract class EnchantmentScreenHandlerMixin extends ScreenHandler {
-    @Shadow
-    @Final
-    public int[] enchantmentPower;
-    @Shadow
-    @Final
-    public int[] enchantmentId;
-    @Shadow
-    @Final
-    public int[] enchantmentLevel;
-    @Shadow
-    @Final
-    private Inventory inventory;
-    @Shadow
-    @Final
-    private ScreenHandlerContext context;
-    @Shadow
-    @Final
-    private Random random;
-    @Shadow
-    @Final
-    private Property seed;
-
-    protected EnchantmentScreenHandlerMixin(@Nullable ScreenHandlerType<?> type, int syncId) {
-        super(type, syncId);
-    }
-
-    @Shadow
-    protected abstract List<EnchantmentLevelEntry> generateEnchantments(ItemStack stack, int slot, int level);
-
+public abstract class EnchantmentScreenHandlerMixin {
     /**
-     * @author Mojang / dreamhopping
-     * @reason To fix MC-2474: "Transparent blocks (ie: snow) placed between bookshelves and enchantment tables negate bonuses received from bookshelves."
+     * Redirects all [World.isAir] method calls to [BlockState.isSolidBlock]
+     * Note: method_17411 is the lambda which the isAir method is called from (ScreenHandlerContext#run, l94)
+     *
+     * @param world The world the player is currently in
+     * @param pos   The position of the block being checked
+     * @return If the block is a transparent block, return true, otherwise false
      */
-    @Overwrite
-    public void onContentChanged(Inventory inventory) {
-        if (inventory == this.inventory) {
-            ItemStack itemStack = inventory.getStack(0);
-            if (!itemStack.isEmpty() && itemStack.isEnchantable()) {
-                this.context.run((world, blockPos) -> {
-                    int i = 0;
-
-                    int j;
-                    for (j = -1; j <= 1; ++j) {
-                        for (int k = -1; k <= 1; ++k) {
-                            if (j != 0 || k != 0) {
-                                if (world.getBlockState(blockPos.add(k * 2, 0, j * 2)).isOf(Blocks.BOOKSHELF)) {
-                                    ++i;
-                                }
-
-                                if (world.getBlockState(blockPos.add(k * 2, 1, j * 2)).isOf(Blocks.BOOKSHELF)) {
-                                    ++i;
-                                }
-
-                                if (k != 0 && j != 0) {
-                                    if (world.getBlockState(blockPos.add(k * 2, 0, j)).isOf(Blocks.BOOKSHELF)) {
-                                        ++i;
-                                    }
-
-                                    if (world.getBlockState(blockPos.add(k * 2, 1, j)).isOf(Blocks.BOOKSHELF)) {
-                                        ++i;
-                                    }
-
-                                    if (world.getBlockState(blockPos.add(k, 0, j * 2)).isOf(Blocks.BOOKSHELF)) {
-                                        ++i;
-                                    }
-
-                                    if (world.getBlockState(blockPos.add(k, 1, j * 2)).isOf(Blocks.BOOKSHELF)) {
-                                        ++i;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    this.random.setSeed(this.seed.get());
-
-                    for (j = 0; j < 3; ++j) {
-                        this.enchantmentPower[j] = EnchantmentHelper.calculateRequiredExperienceLevel(this.random, j, i, itemStack);
-                        this.enchantmentId[j] = -1;
-                        this.enchantmentLevel[j] = -1;
-                        if (this.enchantmentPower[j] < j + 1) {
-                            this.enchantmentPower[j] = 0;
-                        }
-                    }
-
-                    for (j = 0; j < 3; ++j) {
-                        if (this.enchantmentPower[j] > 0) {
-                            List<EnchantmentLevelEntry> list = this.generateEnchantments(itemStack, j, this.enchantmentPower[j]);
-                            if (list != null && !list.isEmpty()) {
-                                EnchantmentLevelEntry enchantmentLevelEntry = list.get(this.random.nextInt(list.size()));
-                                this.enchantmentId[j] = Registry.ENCHANTMENT.getRawId(enchantmentLevelEntry.enchantment);
-                                this.enchantmentLevel[j] = enchantmentLevelEntry.level;
-                            }
-                        }
-                    }
-
-                    this.sendContentUpdates();
-                });
-            } else {
-                for (int i = 0; i < 3; ++i) {
-                    this.enchantmentPower[i] = 0;
-                    this.enchantmentId[i] = -1;
-                    this.enchantmentLevel[i] = -1;
-                }
-            }
-        }
-
+    @Redirect(method = "method_17411", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;isAir(Lnet/minecraft/util/math/BlockPos;)Z"))
+    private boolean isAir(World world, BlockPos pos) {
+        // Check if the block is a solid block & invert the return value
+        return !world.getBlockState(pos).isSolidBlock(world, pos);
     }
 }
