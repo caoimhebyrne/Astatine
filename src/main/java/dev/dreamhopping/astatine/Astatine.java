@@ -22,6 +22,11 @@ import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The main class for Astatine, only used for logging and other minor things
+ *
+ * @author Conor Byrne (dreamhopping)
+ */
 public class Astatine implements ModInitializer {
     public final Logger logger = LogManager.getLogger("Astatine");
 

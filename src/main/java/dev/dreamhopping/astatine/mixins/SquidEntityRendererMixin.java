@@ -32,6 +32,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * Fix MC-115092: Squid named "Dinnerbone" or "Grumm" is not upside-down
  * SquidEntityRenderer#setupTransforms does not call the super method, meaning that the transformations for upside down are not applied
+ *
+ * @author Conor Byrne (dreamhopping)
  */
 @Mixin(SquidEntityRenderer.class)
 public class SquidEntityRendererMixin {

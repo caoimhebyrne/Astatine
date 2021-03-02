@@ -30,6 +30,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/**
+ * Fix MC-132820: "Spawner isn't in the creative inventory"
+ *
+ * @author Conor Byrne (dreamhopping)
+ */
 @Mixin(Items.class)
 public abstract class ItemsMixin {
     @Shadow
@@ -38,12 +43,12 @@ public abstract class ItemsMixin {
     }
 
     /**
-     * @author Mojang / dreamhopping
-     * @reason To fix MC-132820: "Spawner isn't in the creative inventory"
+     * Applies the ItemGroup.MISC value to register for a SpawnerBlock so it will appear in the creative inventory
      */
     @Inject(method = "register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;", at = @At("HEAD"), cancellable = true)
     private static void register(Block block, CallbackInfoReturnable<Item> cir) {
         if (block instanceof SpawnerBlock) {
+            // Register the spawner under the miscellaneous category
             cir.setReturnValue(register(Blocks.SPAWNER, ItemGroup.MISC));
         }
     }

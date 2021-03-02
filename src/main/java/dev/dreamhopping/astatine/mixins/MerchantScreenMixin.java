@@ -34,8 +34,9 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import java.util.Iterator;
 
 /**
- * @author Mojang / dreamhopping
- * To fix MC-148998: "Items are offset in wandering trader's (and villager's) trading menu"
+ * Fix MC-148998: "Items are offset in wandering trader's (and villager's) trading menu"
+ *
+ * @author Conor Byrne (dreamhopping)
  */
 @Mixin(MerchantScreen.class)
 public class MerchantScreenMixin {
@@ -59,7 +60,7 @@ public class MerchantScreenMixin {
      * @param itemStack The item that is being rendered
      */
     @Inject(method = "render", locals = LocalCapture.CAPTURE_FAILSOFT, at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/village/TradeOffer;getMutableSellItem()Lnet/minecraft/item/ItemStack;"))
-    private void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci, TradeOfferList tradeOfferList, int i, int j, int k, int l, int m, Iterator var11, TradeOffer tradeOffer, ItemStack itemStack, ItemStack itemStack2, ItemStack itemStack3, ItemStack itemStack4) {
+    private void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci, TradeOfferList tradeOfferList, int i, int j, int k, int l, int m, Iterator<TradeOffer> var11, TradeOffer tradeOffer, ItemStack itemStack, ItemStack itemStack2, ItemStack itemStack3, ItemStack itemStack4) {
         isBlock = !(itemStack.getItem() instanceof BlockItem);
     }
 }
