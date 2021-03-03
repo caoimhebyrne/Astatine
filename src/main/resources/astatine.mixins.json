@@ -4,6 +4,7 @@
   "package": "dev.dreamhopping.astatine.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "AdvancementsScreenMixin",
     "EnchantmentScreenHandlerMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
