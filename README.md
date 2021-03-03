@@ -29,7 +29,6 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 ### Bugs to be fixed
 
 - ``MC-117800``: Half bed can be placed outside the world's border
-- ``MC-929``: Sugarcane can be placed underwater
 
 ### Credits
 
