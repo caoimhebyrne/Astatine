@@ -25,11 +25,11 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-115092``: Squid named "Dinnerbone" or "Grumm" is not
   upside-down [(#3)](https://github.com/dreamhopping/Astatine/issues/3)
 - ``MC-117977``: Advancement GUI doesn't have a close button
+- ``MC-75721``: Arrow buttons in book UI are rendered in front of tooltips
 
 ### Bugs to be fixed
 
 - ``MC-117800``: Half bed can be placed outside the world's border
-- ``MC-75721``: Arrow buttons in book UI are rendered in front of tooltips
 
 ### Credits
 

@@ -9,7 +9,8 @@
     "ItemsMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin",
-    "SquidEntityRendererMixin"
+    "SquidEntityRendererMixin",
+    "BookScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
