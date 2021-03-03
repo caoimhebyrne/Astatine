@@ -18,6 +18,7 @@
 
 package dev.dreamhopping.astatine.mixins;
 
+import net.minecraft.network.packet.c2s.play.SelectMerchantTradeC2SPacket;
 import net.minecraft.network.packet.c2s.play.UpdateCommandBlockMinecartC2SPacket;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.util.ChatUtil;
@@ -28,6 +29,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Fix MC-131562: Pressing "Done" in an empty command block minecart returns "Command set:"
+ * Fix MC-200000: Merchant trade select packet (C2S) does not check for negative indices
  *
  * @author Conor Byrne (dreamhopping)
  */
@@ -45,6 +47,18 @@ public class ServerPlayNetworkHandlerMixin {
         String command = packet.getCommand();
         if (ChatUtil.isEmpty(command)) {
             // The command string is empty, return here
+            ci.cancel();
+        }
+    }
+
+    /**
+     * Checks if the trade id is smaller than 0 before calling setRecipeIndex
+     * Before this fix, if the client sent a negative index such as -1 will cause an ArrayIndexOutOfBoundsException to be thrown.
+     */
+    @Inject(method = "onMerchantTradeSelect", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/MerchantScreenHandler;setRecipeIndex(I)V"), cancellable = true)
+    private void onMerchantTradeSelect(SelectMerchantTradeC2SPacket packet, CallbackInfo ci) {
+        // Check if the trade id is less than 0, if it is then cancel the rest of the method
+        if (packet.getTradeId() < 0) {
             ci.cancel();
         }
     }
