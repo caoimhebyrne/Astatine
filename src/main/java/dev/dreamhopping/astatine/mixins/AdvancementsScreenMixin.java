@@ -20,11 +20,9 @@ package dev.dreamhopping.astatine.mixins;
 
 import dev.dreamhopping.astatine.gui.button.CloseButton;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.advancement.AdvancementTab;
 import net.minecraft.client.gui.screen.advancement.AdvancementsScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -36,12 +34,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 @Mixin(AdvancementsScreen.class)
 public class AdvancementsScreenMixin extends Screen {
-    /**
-     * The current [AdvancementTab] that is being displayed to the user
-     */
-    @Shadow
-    private AdvancementTab selectedTab;
-
     /**
      * Required constructor for extending [Screen] class, if we don't do this there will be compiler errors
      */
