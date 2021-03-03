@@ -27,6 +27,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-117977``: Advancement GUI doesn't have a close button
 - ``MC-75721``: Arrow buttons in book UI are rendered in front of tooltips
 - ``MC-131562``: Pressing "Done" in an empty command block minecart returns "Command set:"
+- ``MC-72687``: Action Bar Messages do not have the small shadow under the text
 
 ### Bugs to be fixed
 
@@ -35,4 +36,4 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 
 ### Credits
 
-- [LlamaLad7](https://github.com/LlamaLad7): Assisting with the improvement of the fix for ``MC-2474`` 
+- [LlamaLad7](https://github.com/LlamaLad7): Assisting with the improvement of the fix for ``MC-2474`` and ``MC-72687``
