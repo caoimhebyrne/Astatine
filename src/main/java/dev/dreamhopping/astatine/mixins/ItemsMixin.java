@@ -36,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @author Conor Byrne (dreamhopping)
  */
 @Mixin(Items.class)
-public abstract class ItemsMixin {
+public class ItemsMixin {
     @Shadow
     private static Item register(Block block, ItemGroup group) {
         return null;
