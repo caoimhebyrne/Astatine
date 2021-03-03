@@ -37,7 +37,7 @@ public class ServerPlayNetworkHandlerMixin {
      * Adds a ChatUtil#isEmpty check before running ServerPlayerEntity#sendSystemMessage
      * Originally this check wasn't there, which meant pressing "Done" in an empty command block minecart returns "Command set:" when it shouldn't do anything, like a regular command block
      *
-     * @see <a href="https://bugs.mojang.com/browse/MC-131562?focusedCommentId=936217&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-"936217">Mojang JIRA Page</a>
+     * @see <a href="https://bugs.mojang.com/browse/MC-131562?focusedCommentId=936217&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-936217">Mojang JIRA Page</a>
      */
     @Inject(method = "onUpdateCommandBlockMinecart", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;sendSystemMessage(Lnet/minecraft/text/Text;Ljava/util/UUID;)V"), cancellable = true)
     private void onUpdateCommandBlockMinecart(UpdateCommandBlockMinecartC2SPacket packet, CallbackInfo ci) {
