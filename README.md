@@ -29,6 +29,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-131562``: Pressing "Done" in an empty command block minecart returns "Command set:"
 - ``MC-72687``: Action Bar Messages do not have the small shadow under the text
 - ``MC-200000``: Merchant trade select packet (C2S) does not check for negative indices
+- ``MC-72494``: In Statistics screen 'm' is the same unit for both minutes and meters
 
 ### Bugs to be fixed
 

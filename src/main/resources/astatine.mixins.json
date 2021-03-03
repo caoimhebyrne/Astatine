@@ -12,7 +12,8 @@
     "MerchantScreenMixin",
     "SeaPickleBlockMixin",
     "ServerPlayNetworkHandlerMixin",
-    "SquidEntityRendererMixin"
+    "SquidEntityRendererMixin",
+    "StatFormatterMixin"
   ],
   "injectors": {
     "defaultRequire": 1
