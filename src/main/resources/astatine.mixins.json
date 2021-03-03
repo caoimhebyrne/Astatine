@@ -5,12 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "AdvancementsScreenMixin",
+    "BookScreenMixin",
     "EnchantmentScreenHandlerMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin",
-    "SquidEntityRendererMixin",
-    "BookScreenMixin"
+    "ServerPlayNetworkHandlerMixin",
+    "SquidEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
