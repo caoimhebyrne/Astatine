@@ -31,10 +31,10 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-200000``: Merchant trade select packet (C2S) does not check for negative indices
 - ``MC-72494``: In Statistics screen 'm' is the same unit for both minutes and meters
 - ``MC-142555``: Cats and Ocelots wont eat tropical fish
+- ``MC-117800``: Half bed can be placed outside the world's border
 
 ### Bugs to be fixed
 
-- ``MC-117800``: Half bed can be placed outside the world's border
 - ``MC-149058``: Using a 1-9 hotkey to move items into the anvil appends the number to the new item name
 - ``MC-219537``: Long villager names cause an overlay
 
