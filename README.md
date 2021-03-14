@@ -35,6 +35,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 
 - ``MC-117800``: Half bed can be placed outside the world's border
 - ``MC-149058``: Using a 1-9 hotkey to move items into the anvil appends the number to the new item name
+- ``MC-142555``: Cats and Ocelots wont eat tropical fish
 
 ### Credits
 
