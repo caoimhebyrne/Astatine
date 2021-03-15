@@ -37,7 +37,8 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 
 - ``MC-149058``: Using a 1-9 hotkey to move items into the anvil appends the number to the new item name
 - ``MC-219537``: Long villager names cause an overlay
-
+- ``MC-153010``: "doMobLoot" gamerule doesn't prevent foxes from dropping their items
+- 
 ### Credits
 
 - [LlamaLad7](https://github.com/LlamaLad7): Assisting with the improvement of the fix for ``MC-2474`` and ``MC-72687``
