@@ -5,9 +5,11 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "AdvancementsScreenMixin",
+    "BedBlockMixin",
     "BookScreenMixin",
     "CatEntityMixin",
     "EnchantmentScreenHandlerMixin",
+    "FoxEntityMixin",
     "InGameHudMixin",
     "ItemsMixin",
     "MerchantScreenMixin",
@@ -15,8 +17,7 @@
     "ServerPlayNetworkHandlerMixin",
     "SquidEntityRendererMixin",
     "StatFormatterMixin",
-    "BedBlockMixin",
-    "FoxEntityMixin"
+    "ItemStatsListWidgetMixin"
   ],
   "injectors": {
     "defaultRequire": 1
