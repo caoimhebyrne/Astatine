@@ -43,4 +43,4 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 ### Credits
 
 - [LlamaLad7](https://github.com/LlamaLad7): Assisting with the improvement of the fix for ``MC-2474`` and ``MC-72687``
-- [DJtheRedstoner](https://github.com/DJtheRedstoner): Providing the fix for ``MC-142555``, ``MC-153010`` and other fixes
+- [DJtheRedstoner](https://github.com/DJtheRedstoner): Providing the fix for ``MC-142555``, ``MC-153010`` and others
