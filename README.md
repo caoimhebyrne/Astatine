@@ -39,6 +39,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 
 - ``MC-149058``: Using a 1-9 hotkey to move items into the anvil appends the number to the new item name
 - ``MC-219537``: Long villager names cause an overlay
+- ``MC-169386``: High numbers in the "Statistics" screen are overlapping with other columns
 
 ### Credits
 
