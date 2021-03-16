@@ -32,12 +32,12 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-72494``: In Statistics screen 'm' is the same unit for both minutes and meters
 - ``MC-142555``: Cats and Ocelots wont eat tropical fish
 - ``MC-117800``: Half bed can be placed outside the world's border
+- ``MC-153010``: "doMobLoot" gamerule doesn't prevent foxes from dropping their items
 
 ### Bugs to be fixed
 
 - ``MC-149058``: Using a 1-9 hotkey to move items into the anvil appends the number to the new item name
 - ``MC-219537``: Long villager names cause an overlay
-- ``MC-153010``: "doMobLoot" gamerule doesn't prevent foxes from dropping their items
 - ``MC-201723``: Statistics sprites don't look pressed when clicked
 
 ### Credits

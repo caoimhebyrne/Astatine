@@ -15,7 +15,8 @@
     "ServerPlayNetworkHandlerMixin",
     "SquidEntityRendererMixin",
     "StatFormatterMixin",
-    "BedBlockMixin"
+    "BedBlockMixin",
+    "FoxEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
