@@ -12,12 +12,13 @@
     "FoxEntityMixin",
     "InGameHudMixin",
     "ItemsMixin",
+    "ItemStatsListWidgetEntryMixin",
+    "ItemStatsListWidgetMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin",
     "ServerPlayNetworkHandlerMixin",
     "SquidEntityRendererMixin",
-    "StatFormatterMixin",
-    "ItemStatsListWidgetMixin"
+    "StatFormatterMixin"
   ],
   "injectors": {
     "defaultRequire": 1
