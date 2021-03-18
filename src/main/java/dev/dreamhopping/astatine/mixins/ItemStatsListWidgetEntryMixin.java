@@ -44,8 +44,8 @@ public class ItemStatsListWidgetEntryMixin {
     /**
      * The formatters used to convert an int (f.ex. 2234214) to a readable string that doesnt overlap other text (f.ex. 2.22M)
      */
-    private static final DecimalFormat millionFormat = Util.make(new DecimalFormat("#.##M"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH)));
-    private static final DecimalFormat billionFormat = Util.make(new DecimalFormat("#.##B"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH)));
+    private static final DecimalFormat millionFormat = Util.make(new DecimalFormat("#.#M"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH)));
+    private static final DecimalFormat billionFormat = Util.make(new DecimalFormat("#.#B"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH)));
 
     /**
      * Solves the overflowing problem of text when the numbers start reaching the millions
