@@ -44,8 +44,8 @@ public class ItemStatsListWidgetEntryMixin {
     /**
      * The formatters used to convert an int (f.ex. 2234214) to a readable string that doesnt overlap other text (f.ex. 2.22M)
      */
-    private final DecimalFormat millionFormat = Util.make(new DecimalFormat("#.##M"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-    private final DecimalFormat billionFormat = Util.make(new DecimalFormat("#.##B"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+    private static final DecimalFormat millionFormat = Util.make(new DecimalFormat("#.##M"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH)));
+    private static final DecimalFormat billionFormat = Util.make(new DecimalFormat("#.##B"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH)));
 
     /**
      * Solves the overflowing problem of text when the numbers start reaching the millions
@@ -53,7 +53,7 @@ public class ItemStatsListWidgetEntryMixin {
      *
      * @return the newly-formatted string if above 1 million, otherwise the original
      */
-    private String customFormat(Stat<?> stat, int i) {
+    private static String customFormat(Stat<?> stat, int i) {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player == null) return "";
 
