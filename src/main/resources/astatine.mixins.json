@@ -17,6 +17,7 @@
     "MerchantScreenMixin",
     "SeaPickleBlockMixin",
     "ServerPlayNetworkHandlerMixin",
+    "SoundEngineMixin",
     "SquidEntityRendererMixin",
     "StatFormatterMixin"
   ],
