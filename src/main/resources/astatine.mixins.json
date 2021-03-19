@@ -18,8 +18,11 @@
     "SeaPickleBlockMixin",
     "ServerPlayNetworkHandlerMixin",
     "SoundEngineMixin",
+    "SoundOptionsScreenMixin",
     "SquidEntityRendererMixin",
-    "StatFormatterMixin"
+    "StatFormatterMixin",
+    "accessor.SoundManagerAccessor",
+    "accessor.SoundSystemAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

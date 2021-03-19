@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Feature: Allow switching between audio devices from inside of Minecraft
  *
- * @author Conor Byrne
+ * @author Conor Byrne (dreamhopping)
  */
 @Mixin(SoundEngine.class)
 public class SoundEngineMixin {
@@ -52,7 +52,10 @@ public class SoundEngineMixin {
             String selectedSoundDevice = AudioManager.Configuration.SELECTED_SOUND_DEVICE;
             if (!devices.contains(selectedSoundDevice)) {
                 AudioManager.getInstance().logger.info("Sound device \"{}\" is not available, using system default", selectedSoundDevice);
-                return useSystemSoundDevice();
+                long deviceHandle = useSystemSoundDevice();
+
+                AudioManager.Configuration.SELECTED_SOUND_DEVICE = devices.get(0);
+                return deviceHandle;
             }
 
             AudioManager.getInstance().logger.info("Switching to sound device \"{}\"", selectedSoundDevice);

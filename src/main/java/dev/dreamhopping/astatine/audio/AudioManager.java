@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * Feature: Allow switching between audio devices from inside of Minecraft
  *
- * @author Conor Byrne
+ * @author Conor Byrne (dreamhopping)
  */
 public class AudioManager {
     private static final AudioManager instance = new AudioManager();
