@@ -15,6 +15,9 @@ fix!
 
 Astatine aims to fix those bugs in the most efficient ways, without compromising the core game mechanics.
 
+### Features
+- Switch between audio devices inside of Minecraft (based on my 1.8.9 mod, [AudioSwitcher](https://github.com/dreamhopping/AudioSwitcher))
+
 ### Fixed bugs
 
 - ``MC-132820``: Spawner isn't in the creative inventory
