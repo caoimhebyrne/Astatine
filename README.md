@@ -35,6 +35,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-153010``: "doMobLoot" gamerule doesn't prevent foxes from dropping their items
 - ``MC-201723``: Statistics sprites don't look pressed when clicked
 - ``MC-169386``: High numbers in the "Statistics" screen are overlapping with other columns
+- Fix ``ArrayList#forEach`` usage impacting how long it takes to run a chunk tick in ServerChunkManager
 
 ### Bugs to be fixed
 
@@ -43,6 +44,8 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 
 ### Credits
 
-- [LlamaLad7](https://github.com/LlamaLad7): Assisting with the improvement of the fix for ``MC-2474`` and ``MC-72687``
+- [LlamaLad7](https://github.com/LlamaLad7): Assisting with the improvement of the fix for ``MC-2474``, ``MC-72687`` and
+  removing ``ArrayList#forEach`` usage in ``ServerChunkManager``
+- [asbyth](https://github.com/asbyth): Highlighting the issue of ``ArrayList#forEach`` usage in ``ServerChunkManager``
 - [UserTeemu](https://github.com/UserTeemu): Providing the fix for ``MC-72494``
 - [DJtheRedstoner](https://github.com/DJtheRedstoner): Providing the fix for ``MC-142555``, ``MC-153010`` and others

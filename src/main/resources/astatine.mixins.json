@@ -16,6 +16,7 @@
     "ItemStatsListWidgetMixin",
     "MerchantScreenMixin",
     "SeaPickleBlockMixin",
+    "ServerChunkManagerMixin",
     "ServerPlayNetworkHandlerMixin",
     "SquidEntityRendererMixin",
     "StatFormatterMixin"
