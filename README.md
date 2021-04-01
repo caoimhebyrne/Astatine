@@ -38,7 +38,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-153010``: "doMobLoot" gamerule doesn't prevent foxes from dropping their items
 - ``MC-201723``: Statistics sprites don't look pressed when clicked
 - ``MC-169386``: High numbers in the "Statistics" screen are overlapping with other columns
-
+- ``MC-145748``: Clicking a button when there's a slider under the mouse in the next screen plays the click sound twice
 ### Bugs to be fixed
 
 - ``MC-149058``: Using a 1-9 hotkey to move items into the anvil appends the number to the new item name
