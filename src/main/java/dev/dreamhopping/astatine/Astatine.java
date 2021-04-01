@@ -13,11 +13,12 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package dev.dreamhopping.astatine;
 
+import dev.dreamhopping.astatine.config.AstatineConfig;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,9 +30,11 @@ import org.apache.logging.log4j.Logger;
  */
 public class Astatine implements ModInitializer {
     public final Logger logger = LogManager.getLogger("Astatine");
+    public final AstatineConfig config = new AstatineConfig();
 
     @Override
     public void onInitialize() {
         logger.info("Astatine v" + AstatineMetadata.VERSION + " has been loaded successfully!");
+        config.load();
     }
 }
