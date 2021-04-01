@@ -55,6 +55,9 @@ public class AudioSwitcherButton extends ButtonWidget {
         List<String> devices = AudioManager.getInstance().devices;
         String nextDevice = ArrayUtil.getNext(devices, currentDevice);
         if (!nextDevice.equals(currentDevice)) setCurrentDevice(nextDevice);
+
+        // Play the button press sound on the new sound device
+        this.playDownSound(MinecraftClient.getInstance().getSoundManager());
     }
 
     /**
