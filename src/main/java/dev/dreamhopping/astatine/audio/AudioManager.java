@@ -18,6 +18,10 @@
 
 package dev.dreamhopping.astatine.audio;
 
+import dev.dreamhopping.astatine.mixins.accessor.SoundManagerAccessor;
+import dev.dreamhopping.astatine.mixins.accessor.SoundSystemAccessor;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.sound.SoundSystem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.openal.ALC11;
@@ -42,7 +46,6 @@ public class AudioManager {
 
     public void fetchDevices() {
         try {
-            logger.info("Fetching available OpenAL devices");
             devices = ALUtil.getStringList(0, ALC11.ALC_ALL_DEVICES_SPECIFIER);
             logger.info("Found " + AudioManager.getInstance().devices.size() + " device(s)");
         } catch (Throwable t) {
@@ -50,7 +53,17 @@ public class AudioManager {
         }
     }
 
+    public void restartSoundSystem() {
+        SoundManagerAccessor soundManagerAccessor = (SoundManagerAccessor) MinecraftClient.getInstance().getSoundManager();
+
+        SoundSystem soundSystem = soundManagerAccessor.getSoundSystem();
+        SoundSystemAccessor soundSystemAccessor = (SoundSystemAccessor) soundSystem;
+
+        soundSystem.stop();
+        soundSystemAccessor.invokeStart();
+    }
+
     public static class Configuration {
-        public static String SELECTED_SOUND_DEVICE = "THIS SOUND DEVICE DOES NOT EXIST";
+        public static String SELECTED_SOUND_DEVICE = "";
     }
 }

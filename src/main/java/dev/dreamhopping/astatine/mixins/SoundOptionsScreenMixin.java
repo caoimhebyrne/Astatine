@@ -19,14 +19,9 @@
 package dev.dreamhopping.astatine.mixins;
 
 import dev.dreamhopping.astatine.audio.AudioManager;
-import dev.dreamhopping.astatine.mixins.accessor.SoundManagerAccessor;
-import dev.dreamhopping.astatine.mixins.accessor.SoundSystemAccessor;
-import net.minecraft.client.MinecraftClient;
+import dev.dreamhopping.astatine.gui.button.AudioSwitcherButton;
 import net.minecraft.client.gui.screen.options.GameOptionsScreen;
 import net.minecraft.client.gui.screen.options.SoundOptionsScreen;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.sound.SoundSystem;
-import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -47,27 +42,11 @@ public abstract class SoundOptionsScreenMixin extends GameOptionsScreen {
     }
 
     /**
-     * Add an audio device button into the audio switcher screen
+     * Adds an audio device button into the audio switcher screen
      */
     @Inject(method = "init", at = @At("RETURN"))
     private void init(CallbackInfo ci) {
-        String originalText = "Audio Device: " + AudioManager.Configuration.SELECTED_SOUND_DEVICE.replace("OpenAL Soft on ", "");
-        String trimmedText = MinecraftClient.getInstance().textRenderer.trimToWidth(originalText, 130);
-        if (MinecraftClient.getInstance().textRenderer.getWidth(originalText) >= 130)
-            trimmedText = replaceLast(trimmedText, " ", "") + "...";
-
-        this.addButton(new ButtonWidget(this.width / 2 - 155 + 160, this.height / 6 - 12 + 24 * (11 >> 1), 150, 20, Text.of(trimmedText), (button) -> {
-            SoundManagerAccessor soundManagerAccessor = (SoundManagerAccessor) MinecraftClient.getInstance().getSoundManager();
-
-            SoundSystem soundSystem = soundManagerAccessor.getSoundSystem();
-            SoundSystemAccessor soundSystemAccessor = (SoundSystemAccessor) soundSystem;
-
-            soundSystem.stop();
-            soundSystemAccessor.invokeStart();
-        }));
-    }
-
-    public String replaceLast(String text, String regex, String replacement) {
-        return text.replaceFirst("(?s)" + regex + "(?!.*?" + regex + ")", replacement);
+        AudioManager.getInstance().fetchDevices();
+        this.addButton(new AudioSwitcherButton(this.width / 2 - 155 + 160, this.height / 6 - 12 + 24 * (11 >> 1), 150, 20));
     }
 }
