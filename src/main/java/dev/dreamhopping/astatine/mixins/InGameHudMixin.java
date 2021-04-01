@@ -13,7 +13,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package dev.dreamhopping.astatine.mixins;
@@ -38,18 +38,18 @@ public class InGameHudMixin {
      * Redirects all [TextRenderer.draw] calls to [TextRenderer.drawWithShadow] after the Profiler#push method is called with "overlayMessage" as the argument
      */
     @Redirect(method = "render",
-            slice = @Slice(
-                    from = @At(
-                            value = "INVOKE_STRING",
-                            target = "Lnet/minecraft/util/profiler/Profiler;push(Ljava/lang/String;)V",
-                            args = "ldc=overlayMessage"
-                    )
-            ),
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I",
-                    ordinal = 0
+        slice = @Slice(
+            from = @At(
+                value = "INVOKE_STRING",
+                target = "Lnet/minecraft/util/profiler/Profiler;push(Ljava/lang/String;)V",
+                args = "ldc=overlayMessage"
             )
+        ),
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I",
+            ordinal = 0
+        )
     )
     private int drawToDrawWithShadow(TextRenderer textRenderer, MatrixStack matrices, Text text, float x, float y, int color) {
         return textRenderer.drawWithShadow(matrices, text, x, y, color);

@@ -13,22 +13,14 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package dev.dreamhopping.astatine.mixins;
 
 import net.minecraft.stat.StatFormatter;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-
-import java.text.DecimalFormat;
 
 /**
  * Fix MC-72494: In Statistics screen 'm' is the same unit for both minutes and meters
@@ -42,7 +34,7 @@ public interface StatFormatterMixin {
      */
     @Overwrite
     static String method_16819(int i) {
-        double d = (double)i / 20.0D;
+        double d = (double) i / 20.0D;
         double e = d / 60.0D;
         double f = e / 60.0D;
         double g = f / 24.0D;

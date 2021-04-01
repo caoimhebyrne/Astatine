@@ -13,7 +13,7 @@
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package dev.dreamhopping.astatine.mixins;
@@ -41,7 +41,7 @@ public class CatEntityMixin {
      * Modifies the list of items passed to the Ingredient.ofItems call to add TROPICAL_FISH to the supported ingredients
      */
     @ModifyArg(method = "<clinit>", at = @At(
-            value = "INVOKE", target = "Lnet/minecraft/recipe/Ingredient;ofItems([Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/recipe/Ingredient;"))
+        value = "INVOKE", target = "Lnet/minecraft/recipe/Ingredient;ofItems([Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/recipe/Ingredient;"))
     private static ItemConvertible[] modifyItems(ItemConvertible[] items) {
         List<ItemConvertible> newItems = new ArrayList<>();
 
