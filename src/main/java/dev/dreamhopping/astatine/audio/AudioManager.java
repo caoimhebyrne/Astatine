@@ -45,9 +45,11 @@ public class AudioManager {
     }
 
     public void fetchDevices() {
+        boolean firstRun = devices.isEmpty();
+
         try {
             devices = ALUtil.getStringList(0, ALC11.ALC_ALL_DEVICES_SPECIFIER);
-            logger.info("Found " + AudioManager.getInstance().devices.size() + " device(s)");
+            if (firstRun) logger.info("Found " + AudioManager.getInstance().devices.size() + " device(s)");
         } catch (Throwable t) {
             logger.error("Failed to fetch OpenAL devices: ", t);
         }

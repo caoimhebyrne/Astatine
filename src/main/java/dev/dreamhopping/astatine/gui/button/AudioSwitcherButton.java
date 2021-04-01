@@ -22,7 +22,9 @@ import dev.dreamhopping.astatine.audio.AudioManager;
 import dev.dreamhopping.astatine.util.ArrayUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
 import java.util.List;
@@ -35,11 +37,15 @@ import java.util.List;
  */
 public class AudioSwitcherButton extends ButtonWidget {
     private final TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
+    private final ButtonWidget.TooltipSupplier tooltipSupplier;
+
     private String currentDevice = AudioManager.Configuration.SELECTED_SOUND_DEVICE;
 
     public AudioSwitcherButton(int x, int y, int width, int height) {
         super(x, y, width, height, Text.of(""), null);
+
         this.setMessage(getReadableAudioDeviceString(currentDevice));
+        this.tooltipSupplier = this::onTooltip;
     }
 
     /**
@@ -49,6 +55,13 @@ public class AudioSwitcherButton extends ButtonWidget {
         List<String> devices = AudioManager.getInstance().devices;
         String nextDevice = ArrayUtil.getNext(devices, currentDevice);
         if (!nextDevice.equals(currentDevice)) setCurrentDevice(nextDevice);
+    }
+
+    /**
+     * Renders the full audio device name when hovered
+     */
+    public void renderToolTip(MatrixStack matrices, int mouseX, int mouseY) {
+        this.tooltipSupplier.onTooltip(this, matrices, mouseX, mouseY);
     }
 
     /**
@@ -82,5 +95,17 @@ public class AudioSwitcherButton extends ButtonWidget {
         }
 
         return Text.of(trimmedText);
+    }
+
+    /**
+     * Renders a tooltip of the original audio device name if it exceeds the length
+     */
+    private void onTooltip(ButtonWidget button, MatrixStack matrices, int mouseX, int mouseY) {
+        Screen currentScreen = MinecraftClient.getInstance().currentScreen;
+        if (currentScreen == null) return;
+
+        String currentDeviceText = getReadableAudioDeviceString(currentDevice).asString();
+        if (textRenderer.getWidth(currentDeviceText) >= 130)
+            currentScreen.renderTooltip(matrices, Text.of(currentDevice.replace("OpenAL Soft on ", "")), mouseX, mouseY);
     }
 }
