@@ -35,7 +35,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  */
 @Mixin(FoxEntity.class)
 public abstract class FoxEntityMixin extends Entity {
-
     /**
      * Required constructor for mixin to function
      */
@@ -61,5 +60,4 @@ public abstract class FoxEntityMixin extends Entity {
         // Add an additional check for the doMobLoot gamerule
         return !world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
     }
-
 }

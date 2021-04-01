@@ -40,8 +40,7 @@ public class CatEntityMixin {
     /**
      * Modifies the list of items passed to the Ingredient.ofItems call to add TROPICAL_FISH to the supported ingredients
      */
-    @ModifyArg(method = "<clinit>", at = @At(
-        value = "INVOKE", target = "Lnet/minecraft/recipe/Ingredient;ofItems([Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/recipe/Ingredient;"))
+    @ModifyArg(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/Ingredient;ofItems([Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/recipe/Ingredient;"))
     private static ItemConvertible[] modifyItems(ItemConvertible[] items) {
         List<ItemConvertible> newItems = new ArrayList<>();
 

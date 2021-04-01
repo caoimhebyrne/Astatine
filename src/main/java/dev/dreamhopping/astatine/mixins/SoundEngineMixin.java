@@ -36,6 +36,8 @@ import java.util.List;
 public class SoundEngineMixin {
     /**
      * Overwrites any SoundEngineMixin#openDevice calls to allow the user to select which sound device they want to use
+     *
+     * @author Conor Byrne (dreamhopping)
      */
     @Overwrite
     private static long openDevice() {

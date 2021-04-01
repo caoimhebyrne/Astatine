@@ -33,7 +33,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  */
 @Mixin(BedBlock.class)
 public class BedBlockMixin {
-
     /**
      * Add an additional check when checking if the 2nd part of bed can be placed that adds a check if
      * its inside current world border.
@@ -51,5 +50,4 @@ public class BedBlockMixin {
         // Do default check as well as world border check
         return blockState.canReplace(ctx) && ctx.getWorld().getWorldBorder().contains(targetPos);
     }
-
 }
