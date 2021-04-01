@@ -44,6 +44,9 @@ public class AudioManager {
         return instance;
     }
 
+    /**
+     * Fetches all audio devices capable for usage via OpenAL
+     */
     public void fetchDevices() {
         boolean firstRun = devices.isEmpty();
 
@@ -55,6 +58,9 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Restarts the Minecraft SoundSystem without reloading the sound assets via Mixin Accessors
+     */
     public void restartSoundSystem() {
         SoundManagerAccessor soundManagerAccessor = (SoundManagerAccessor) MinecraftClient.getInstance().getSoundManager();
 

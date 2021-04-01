@@ -52,10 +52,9 @@ public class SoundEngineMixin {
             String selectedSoundDevice = AudioManager.Configuration.SELECTED_SOUND_DEVICE;
             if (!devices.contains(selectedSoundDevice)) {
                 AudioManager.getInstance().logger.info("Sound device \"{}\" is not available, using system default", selectedSoundDevice);
-                long deviceHandle = useSystemSoundDevice();
-
                 AudioManager.Configuration.SELECTED_SOUND_DEVICE = devices.get(0);
-                return deviceHandle;
+
+                return useSystemSoundDevice();
             }
 
             AudioManager.getInstance().logger.info("Switching to sound device \"{}\"", selectedSoundDevice);
