@@ -22,8 +22,10 @@
     "SoundOptionsScreenMixin",
     "SquidEntityRendererMixin",
     "StatFormatterMixin",
+    "WorldListWidgetEntryMixin",
     "accessor.SoundManagerAccessor",
-    "accessor.SoundSystemAccessor"
+    "accessor.SoundSystemAccessor",
+    "accessor.WorldListWidgetAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
