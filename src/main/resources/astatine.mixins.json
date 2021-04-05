@@ -10,6 +10,7 @@
     "CatEntityMixin",
     "EnchantmentScreenHandlerMixin",
     "FoxEntityMixin",
+    "GenericContainerScreenMixin",
     "InGameHudMixin",
     "ItemsMixin",
     "ItemStatsListWidgetEntryMixin",
