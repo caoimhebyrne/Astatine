@@ -16,12 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pluginManagement {
-    repositories {
-        maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
-        }
-        gradlePluginPortal()
+package dev.cbyrne.astatine;
+
+import dev.cbyrne.astatine.config.AstatineConfig;
+import net.fabricmc.api.ModInitializer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
+ * The main class for Astatine, only used for logging and other minor things
+ *
+ * @author Conor Byrne
+ */
+public class Astatine implements ModInitializer {
+    public final Logger logger = LogManager.getLogger("Astatine");
+    public final AstatineConfig config = new AstatineConfig();
+
+    @Override
+    public void onInitialize() {
+        logger.info("Astatine v" + AstatineMetadata.VERSION + " has been loaded successfully!");
+        config.load();
     }
 }

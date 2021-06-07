@@ -16,12 +16,17 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pluginManagement {
-    repositories {
-        maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
-        }
-        gradlePluginPortal()
-    }
+package dev.cbyrne.astatine.mixins.accessor;
+
+import net.minecraft.client.sound.SoundSystem;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Invoker;
+
+/**
+ * Allows us to invoke SoundSystem#start
+ */
+@Mixin(SoundSystem.class)
+public interface SoundSystemAccessor {
+    @Invoker
+    void invokeStart();
 }

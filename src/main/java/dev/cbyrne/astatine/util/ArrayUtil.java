@@ -16,12 +16,13 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pluginManagement {
-    repositories {
-        maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
-        }
-        gradlePluginPortal()
+package dev.cbyrne.astatine.util;
+
+import java.util.List;
+
+public class ArrayUtil {
+    public static <T> T getNext(List<T> list, T current) {
+        int currentIndex = list.indexOf(current);
+        return list.get(list.size() <= (currentIndex + 1) ? 0 : currentIndex + 1);
     }
 }

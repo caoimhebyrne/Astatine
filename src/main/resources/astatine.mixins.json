@@ -1,8 +1,8 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "dev.dreamhopping.astatine.mixins",
-  "compatibilityLevel": "JAVA_8",
+  "package": "dev.cbyrne.astatine.mixins",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
     "AdvancementsScreenMixin",
     "BedBlockMixin",

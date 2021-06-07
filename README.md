@@ -40,7 +40,7 @@ Astatine aims to fix those bugs in the most efficient ways, without compromising
 - ``MC-169386``: High numbers in the "Statistics" screen are overlapping with other columns
 - ``MC-145748``: Clicking a button when there's a slider under the mouse in the next screen plays the click sound twice
 - ``MC-383``: World names/versions/timestamps can overflow the list to the right
-- ``MC-6855``: Maximum length of a chest's name is too long
+- ``MC-6866``: Maximum length of a chest's name is too long
 
 ### Bugs to be fixed
 
