@@ -35,14 +35,20 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class EnchantmentScreenHandlerMixin {
     /**
      * Redirects all [World.isAir] method calls to [BlockState.isSolidBlock]
-     * Note: method_17411 is the lambda which the isAir method is called from (ScreenHandlerContext#run, l94)
+     * Note: method_17411 is the lambda inside EnchantmentScreenHandler#onContentChanged (line 93) which checks if the neighboring blocks are air
      *
      * @param world The world the player is currently in
      * @param pos   The position of the block being checked
      * @return If the block is a transparent block, return true, otherwise false
      */
-    @Redirect(method = "onContentChanged", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;isAir(Lnet/minecraft/util/math/BlockPos;)Z"))
-    private boolean isAir(World world, BlockPos pos) {
+    @Redirect(
+        method = "method_17411",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/world/World;isAir(Lnet/minecraft/util/math/BlockPos;)Z"
+        )
+    )
+    private boolean redirectIsAir(World world, BlockPos pos) {
         // Check if the block is a solid block & invert the return value
         return !world.getBlockState(pos).isSolidBlock(world, pos);
     }
