@@ -21,9 +21,11 @@ package dev.cbyrne.astatine.mixins;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SpawnerBlock;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.util.Rarity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,20 +38,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @author Conor Byrne
  */
 @Mixin(Items.class)
-public class ItemsMixin {
+public abstract class ItemsMixin {
     @Shadow
-    private static Item register(Block block, ItemGroup group) {
-        return null;
+    protected static Item register(Block block, Item item) {
+        throw new AssertionError("Reached the body of a shadowed method. dev.cbyrne.astatine.mixins.ItemsMixin#register l43");
     }
 
     /**
-     * Applies the ItemGroup.MISC value to register for a SpawnerBlock so it will appear in the creative inventory
+     * Sets the miscellaneous category for a SpawnerBlock so it will appear in the creative inventory
      */
-    @Inject(method = "register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;", at = @At("HEAD"), cancellable = true)
-    private static void register(Block block, CallbackInfoReturnable<Item> cir) {
-        if (block instanceof SpawnerBlock) {
-            // Register the spawner under the miscellaneous category
-            cir.setReturnValue(register(Blocks.SPAWNER, ItemGroup.MISC));
-        }
+    @Inject(
+        method = "register(Lnet/minecraft/item/BlockItem;)Lnet/minecraft/item/Item;",
+        at = @At("HEAD"),
+        cancellable = true
+    )
+    private static void registerSpawnerInCreativeInventory(BlockItem item, CallbackInfoReturnable<Item> cir) {
+        if (item.getBlock() instanceof SpawnerBlock)
+            cir.setReturnValue(register(Blocks.SPAWNER, new BlockItem(Blocks.SPAWNER, (new Item.Settings()).group(ItemGroup.MISC).rarity(Rarity.EPIC))));
     }
 }
