@@ -47,7 +47,7 @@ public class AdvancementsScreenMixin extends Screen {
     @Inject(method = "init()V", at = @At("RETURN"))
     private void init(CallbackInfo callbackInfo) {
         // Add a button at the top right corner of the selected tab
-        addDrawable(new CloseButton((this.width - (this.width - 252) / 2) - 20, ((this.height - 140) / 2) + 5, (ButtonWidget) -> onClose()));
+        addDrawableChild(new CloseButton((this.width - (this.width - 252) / 2) - 20, ((this.height - 140) / 2) + 5, (ButtonWidget) -> onClose()));
     }
 
     /**
